@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PhaserJS #8</title>
+  <link rel="shortcut icon" type="image/png" href="images/ico_full.png"/>
+  <link rel="stylesheet" href="stylesheet/prism.css">
+  <link rel="stylesheet" href="stylesheet/style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+
+  <!-- Introduction -->
+  <div class="banner" style="display: block !important; background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('https://d2skuhm0vrry40.cloudfront.net/2018/articles/2018-08-29-13-52/nintendo-takes-down-11-year-old-pokemon-fangame-kit-1535547168922.jpg/EG11/thumbnail/750x422/format/jpg/quality/60');">
+    <div class="container text-center">
+      <div class="main">
+        <img src="images/logo.png" alt="">
+        <div class="class-title text-center">
+          <h1>PhaserJS<br> Fiche 8</h1>
+        </div>
+      </div>
+      <p>Durant cette session, on va plus se concentrer sur la création de jeux vidéos dans le language JavaScript. Pour ce faire, on se servira de la librarie <b>Phaser</b>.</p>
+    </div>
+  </div>
+
+  <div class="container" id="challenge">
+
+    <div class="accordion" id="accordionExample">
+
+      <!-- Étape 1 -->
+      <div class="card">
+        <div class="card-header" id="heading1">
+          <h2 class="mb-0">
+            <button class="btn btn-link done task" type="button" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
+              Étape 1 - Défis à compléter avant
+            </button>
+          </h2>
+        </div>
+        <div id="collapse1" class="collapse show" aria-labelledby="heading1" data-parent="#accordionExample">
+          <div class="card-body">
+            <p>Avant d'entamer ce défi, assure toi d'avoir déjà fait ceux ci:</p>
+            <ul>
+              <li><a href="https://techieslab.github.io/PhaserJS-Introduction/">PhaserJS - Personnage</a></li>
+              <li><a href="https://techieslab.github.io/PhaserJS-Platforms/">PhaserJS - Plateformes</a></li>
+              <li><a href="https://techieslab.github.io/PhaserJS-GagnerPerdre/">PhaserJS - Gagner et Perdre</a></li>
+              <li><a href="https://techieslab.github.io/PhaserJS-MapFacile/">PhaserJS - Map Facile</a></li>
+              <li><a href="https://techieslab.github.io/PhaserJS-PointsEtVies/">PhaserJS - Points et Vies</a></li>
+              <li><a href="https://techieslab.github.io/PhaserJS-CoeursEtEnnemis/">PhaserJS - Coeurs et Ennemis</a></li>
+              <li><a href="https://techieslab.github.io/PhaserJS-Animations/">PhaserJS - Animations</a></li>
+            </ul>
+            <p>Ensuite, assure-toi de te munir d'une grande motivation et soif d'apprendre!</p>
+            <p>Aussi, assure-toi que tu sois bien connecté à ton compte <a href="https://repl.it">Repl.It</a>, et que tu aies ton projet de la fois passée.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Étape 2 -->
+      <div class="card">
+        <div class="card-header" id="heading2">
+          <h2 class="mb-0">
+            <button class="btn btn-link task" type="button" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+              Étape 2 - Sons
+            </button>
+          </h2>
+        </div>
+        <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordionExample">
+          <div class="card-body">
+            <p>Aujourd'hui on va ajouter des sons dans notre jeu. Ceux ci peuvent survenir à tout moment, par exemple lorsque tu gagnes un point, lorsque tu gagnes le jeu, lorsque tu touches un ennemi, lorsque tu tombes de la carte, etc. À toi de jouer avec ton imagination!</p>
+
+            <p>Avant de pouvoir ajouter des sons, il faudrait trouver ces sons. Tu es bien entendu le bienvenu de les chercher où tu le souhaites, mais comme d'habitude je recommende un site gratuit d'utilisation: <a href="https://www.soundeffectsplus.com">SoundEffectsPlus</a>. Ici tu peux chercher tes sons préférés, les jouer et les télécharger une fois trouvés. </p>
+
+            <p>Télécharge donc un son que tu aimes et importe le dans ton projet ReplIt. Assure toi de de-zipper les sons d'abord, et de choisir le son en format mp3. Tu peux le renommer en quelque chose de plus adapté.</p>
+
+            <p>Maintenant tu peux <code>load</code> le son dans ton jeu. Pour ce faire, écris la commande suivante</p>
+
+            <pre><code class="language-js">
+              this.load.audio("ding", ["ding.mp3"]);
+            </code></pre>
+
+            <p>Comme d'habitude, tu peux changer le nom du son (Premier paramètre), et le fichier du son (Deuxième paramètre).</p>
+
+            <p>Maintenant, dans la fonction <code>create</code>, tu peux alors créer la <b>variable</b> du son.</p>
+
+            <pre><code class="language-js">
+              this.ding = this.sound.add("ding", { loop: false });
+            </code></pre>
+
+            <p>Tu peux alors jouer ton son quand tu le veux en utilisant <code>this.ding.play()</code>.</p>
+
+            <p>Importe d'autre sons et joue les à différents moments. Tu peux avoir des sons pour lorque tu perds, lorsque tu gagnes, etc. Sois créatif!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Étape 3 -->
+      <div class="card">
+        <div class="card-header" id="heading3">
+          <h2 class="mb-0">
+            <button class="btn btn-link task" type="button" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+              Étape 3 - Bonnes vacances
+            </button>
+          </h2>
+        </div>
+        <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordionExample">
+          <div class="card-body">
+            <p>Comme c'est le dernier cours (Ou la dernière fiche) de cette session, tu peux adapter ton jeu un peu pour bien cloturer cette session. Rien n'est obligatoire, mais voici quelques idées:</p>
+
+            <ul>
+              <li>Ton jeu se déroule à la plage, avec de l'eau en arrière-plan.</li>
+              <li>Comme tu es à la plage, ton joueur devrait être en maillot de bain.</li>
+              <li>Il peut collectionner des objects de plage, comme des balles, des pelles, etc.</li>
+              <li>Pour gagner il a besoin d'un certain nombre d'objects. </li>
+              <li>Il perd lorsqu'il touche des requins ou des méduses.</li>
+              <li>Il pourrait nager pour avancer (Animations)</li>
+              <li>Un son de mer en arrière-plan pourrait jouer pendant toute la partie.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      
+    </div> 
+  </div>
+
+
+
+<div class="footer">
+  <div class="footer-links">
+    <a href="https://techieslab.be/"><i class="fas fa-globe"></i></i></a>
+    <a href="https://www.facebook.com/TechiesLabBrussels"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.linkedin.com/company/techies-lab/"><i class="fab fa-linkedin"></i></a>
+    <a href="https://twitter.com/TechiesLab"><i class="fab fa-twitter"></i></a>
+  </div>
+  <div class="footer-copyright">
+    <a href="https://techieslab.be" rel="noopener noreferrer" target="_blank" class="alert-link copyright">
+      <i class="far fa-copyright"></i> 2021 Techies Lab ASBL. All rights reserved.
+    </a>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="javascript/prism.js"></script>
+</body>
+</html>
